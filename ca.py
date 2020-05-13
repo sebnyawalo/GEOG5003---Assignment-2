@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
 import Data
-import ipywidgets as widgets
-from ipywidgets import interact, interact_manual
 
 # read the criterias from file.
 geology_layer = Data.Read_data('Geology.txt').read()
@@ -33,6 +31,7 @@ def compute_weighed_overlay(geo_data,trans_data,pop_data):
         weighted_layer.append(row)
     print(weighted_layer)
     return weighted_layer
+
 suit = compute_weighed_overlay(geology_layer,tansport_layer,population_layer)
 plt.imshow(suit)
 plt.show()

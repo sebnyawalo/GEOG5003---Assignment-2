@@ -5,7 +5,6 @@ class Read_data:
     def __init__(self,file_name):
         self.file_name = file_name
 
-
     def read(self):
         criteria =[]
         with open(self.file_name, mode='r') as csv_file:
@@ -19,5 +18,5 @@ class Read_data:
                 line_count += 1
             # this is just to show how many lines are in the file
             print('Processed {} lines from txt file.'.format(line_count))
-        return criteria
+        return criteria      
     
