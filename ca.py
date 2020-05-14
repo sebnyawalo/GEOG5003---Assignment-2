@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import Data
-
+import numpy as np
+np.seterr(divide='ignore', invalid='ignore')
 # read the criterias from file.
 geology_layer = Data.Read_data('Geology.txt').read()
 tansport_layer = Data.Read_data('Transport.txt').read()
@@ -29,9 +30,25 @@ def compute_weighed_overlay(geo_data,trans_data,pop_data):
         for j in range(len(geo_data[0])):
             row.append(geo_data[i][j] *0.2 + trans_data[i][j]*0.1 + pop_data[i][j]*0.7)
         weighted_layer.append(row)
-    print(weighted_layer)
+    # print(weighted_layer)
     return weighted_layer
 
+
+
+def normalize_layer(layer):
+    #  convert the weighted overlay layer to numpy array (norm)
+    # Scale the rawpoints array so that each "column" is
+    # normalized to the same scale
+    # # Linear stretch from lowest value = 0 to highest value = 255
+    # print the values to see the results
+
+    norm = np.array(layer)
+    normalized_array = ((norm - norm.min()) * (1/(norm.max() - norm.min()) * 255).astype('uint8'))
+    print(normalized_array.tolist())
+    return normalized_array
 suit = compute_weighed_overlay(geology_layer,tansport_layer,population_layer)
-plt.imshow(suit)
-plt.show()
+# plt.imshow(suit)
+# plt.show()
+
+normalize_layer(suit)
+
