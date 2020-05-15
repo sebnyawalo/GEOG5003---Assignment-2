@@ -3,13 +3,11 @@ This is a Cellular Model used to simulate a site suitability analysis process to
 
 The Model Design Process include:
 
-> 1)	Creteria Selection # Geology, Transport and Population
-> 2)	Layer Normalization # Setting datasets to the same scale e.g. 0 to 255.
-> 3)	Weighted Overlay # Combining the three layers
+> 1)	Creteria Selection - Geology, Transport and Population
+> 2)	Layer Normalization - Setting datasets to the same scale e.g. 0 to 255.
+> 3)	Weighted Overlay - Combining the three layers
 
-The model takes in data from a web-page containing x, y and z values to create the agents for this model. Additionally, the model also reads data from an external file containing a 2D list simulating an enviroment. This enviroment represents 2D space where the agents can interact with other agents and other elements in that space. In this model, agents can move freely, "eat", modify and share their resources with other agents provided that they are within the neighborhood.
-
-The model, when successfully executed, results into a Graphical User Interface showing the agents interaction based on a certain number of agents and iterations.
+The model works by taking in the input files which represent the criterions used to model the suitability analysis. This is aided by a python class which provides a mechanism for reading external data into the model. The Jupyter Notebook file which contains the model implementation, will then instantiate the data class to read the data and build an interactive graphical user interface
 
 __Project Structure:__
 
